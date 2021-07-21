@@ -1,0 +1,14 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Ansible delete file glob
+    find:
+     paths: /home/test-folder/
+     patterns: "*.xvg"
+    register: files_to_delete
+
+  - name: Ansible remove file glob
+    file:
+     path: "{{item.path}}"
+     state: absent
+    with_items: "{{ files_to_delete.files }}"

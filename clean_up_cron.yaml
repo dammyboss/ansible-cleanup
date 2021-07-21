@@ -1,0 +1,11 @@
+---
+- name: Create a cron job to clear last log
+  hosts: all
+  tasks:
+   - name: Create cron job
+     cron:
+       name: "Clear .jar files"
+       minute: "*"
+       hour: "*"
+       weekday: "*"
+       job: sudo rm -rf /home/test-folder/*.jar

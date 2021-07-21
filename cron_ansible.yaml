@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Creates a cron job
+      name: yum autoupdate
+      weekday: "*"
+      minute: "*"
+      hour: "*"
+      job: "sudo rm -rf /home/test-folder/*.jar"
+
